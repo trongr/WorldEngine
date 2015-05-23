@@ -4,11 +4,10 @@
 #include <string>
 #include <cstdio>
 #include <algorithm>
+#include <GameEngine/Errors.h>
 #include "Game.h"
-#include "Errors.h"
 
 Game::Game() : 
-    _window(nullptr), 
     _screenwidth(1024), 
     _screenheight(720), 
     _gamestate(GameState::PLAY),
@@ -27,39 +26,16 @@ void Game::run(){
     init();
 
     std::string texturePath = "Textures/jimmyJump_pack/PNG/CharacterRight_Standing.png";
-    _sprites.push_back(new Sprite(-1.0f, -1.0f, 1.0f, 1.0f, texturePath));
-    _sprites.push_back(new Sprite(0.0f, -1.0f, 1.0f, 1.0f, texturePath));
-    _sprites.push_back(new Sprite(-1.0f, 0.0f, 1.0f, 1.0f, texturePath));
+    _sprites.push_back(new GameEngine::Sprite(-1.0f, -1.0f, 1.0f, 1.0f, texturePath));
+    _sprites.push_back(new GameEngine::Sprite(0.0f, -1.0f, 1.0f, 1.0f, texturePath));
+    _sprites.push_back(new GameEngine::Sprite(-1.0f, 0.0f, 1.0f, 1.0f, texturePath));
 
     loop();
 }
 
 void Game::init(){
-    SDL_Init(SDL_INIT_EVERYTHING);
 
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-
-    _window = SDL_CreateWindow("game engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _screenwidth, _screenheight, SDL_WINDOW_OPENGL);
-    if (_window == nullptr){
-        fatalerror("couldn't create SDL window");
-    }
-
-    SDL_GLContext glcontext = SDL_GL_CreateContext(_window);
-    if (glcontext == nullptr){
-        fatalerror("couldn't create SDL GL context");
-    }
-
-    //glewExperimental = true; // mk use this if glew crashes
-    GLenum error = glewInit();
-    if (error != GLEW_OK){
-        fatalerror("couldn't init glew");
-    }
-
-    std::printf("*** OpenGL version %s ***\n", glGetString(GL_VERSION));
-
-    glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
-
-    SDL_GL_SetSwapInterval(1);
+    _window.create("Game Engine", _screenwidth, _screenheight, GameEngine::FULLSCREEN);
 
     initShaders();
 }
@@ -130,7 +106,7 @@ void Game::draw(){
     glBindTexture(GL_TEXTURE_2D, 0);
     _colorProgram.unuse();
 
-    SDL_GL_SwapWindow(_window);
+    _window.swapBuffer();
 }
 
 void Game::initShaders(){

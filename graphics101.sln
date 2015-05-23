@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "graphics101", "graphics101\graphics101.vcxproj", "{72E4525C-013D-487F-AF5F-A2C427361A60}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameEngine", "GameEngine\GameEngine.vcxproj", "{346B7469-8688-4C4C-829F-0D94DE78DA6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +17,10 @@ Global
 		{72E4525C-013D-487F-AF5F-A2C427361A60}.Debug|Win32.Build.0 = Debug|Win32
 		{72E4525C-013D-487F-AF5F-A2C427361A60}.Release|Win32.ActiveCfg = Release|Win32
 		{72E4525C-013D-487F-AF5F-A2C427361A60}.Release|Win32.Build.0 = Release|Win32
+		{346B7469-8688-4C4C-829F-0D94DE78DA6E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{346B7469-8688-4C4C-829F-0D94DE78DA6E}.Debug|Win32.Build.0 = Debug|Win32
+		{346B7469-8688-4C4C-829F-0D94DE78DA6E}.Release|Win32.ActiveCfg = Release|Win32
+		{346B7469-8688-4C4C-829F-0D94DE78DA6E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

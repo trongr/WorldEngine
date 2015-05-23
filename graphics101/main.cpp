@@ -1,6 +1,6 @@
 #include <iostream>
+#include <GameEngine/Errors.h>
 #include "Game.h"
-#include "Errors.h"
 
 int main(int argc, char** argv){
 
